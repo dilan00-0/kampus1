@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etkinlikler | Kampüs Kulübü</title>
+<style>
+body{margin:0;font-family:Arial;background:#f4f6fb;color:#222}
+header,footer{background:#183b68;color:white;padding:22px 8%}
+nav a{color:white;margin-right:18px;text-decoration:none}
+main{padding:30px 8%}
+input{padding:12px;width:90%;max-width:500px;margin:12px 0}
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;padding:22px;border-radius:10px;box-shadow:0 3px 12px #0001}
+h2,h3{color:#183b68}
+</style>
+</head>
+<body>
+<header>
+<h1>Kampüs Kulübü</h1>
+<nav>
+<a href="index.html">Ana Sayfa</a>
+<a href="etkinlikler.html">Etkinlikler</a>
+<a href="hakkimizda.html">Hakkımızda</a>
+</nav>
+</header>
+<main>
+<h2>Yaklaşan Etkinlikler</h2>
+<p>Katılmak istediğin etkinliği arayabilirsin.</p>
+<input id="arama" placeholder="Etkinlik ara..." oninput="ara()">
+<div class="events" id="liste">
+<div class="card"><h3>Yazılım Atölyesi</h3><p>5 Kasım 2026</p><p>Temel yazılım becerilerini geliştir.</p></div>
+<div class="card"><h3>Müzik Festivali</h3><p>8 Kasım 2026</p><p>Müzik ve eğlence dolu bir gün.</p></div>
+<div class="card"><h3>Fotoğrafçılık Gezisi</h3><p>12 Kasım 2026</p><p>Yeni yerler keşfet ve fotoğraf çek.</p></div>
+<div class="card"><h3>Spor Turnuvası</h3><p>15 Kasım 2026</p><p>Arkadaşlarınla spor yap.</p></div>
+<div class="card"><h3>Çevre Günü</h3><p>20 Kasım 2026</p><p>Çevre bilinci için birlikte çalış.</p></div>
+</div>
+<p id="sonuc"></p>
+</main>
+<footer>Kampüs Kulübü © 2026</footer>
+<script>
+function ara(){
+let q=document.getElementById('arama').value.toLocaleLowerCase('tr');
+let kartlar=document.querySelectorAll('.card'),n=0;
+kartlar.forEach(k=>{
+let uygun=k.innerText.toLocaleLowerCase('tr').includes(q);
+k.style.display=uygun?'block':'none';
+if(uygun)n++;
+});
+document.getElementById('sonuc').innerText=n+' etkinlik bulundu.';
+}
+</script>
+</body>
+</html>
